@@ -5,7 +5,7 @@ import Category from "../models/category";
 const productSchema = Joi.object({
   name: Joi.string().required(),
   price: Joi.number().required(),
-  image: Joi.string().required(),
+  image: Joi.string(),
   description: Joi.string().required(),
   categoryId: Joi.string().required().messages({
     "any.required": "Danh mục sản phẩm là bắt buộc"
@@ -14,7 +14,7 @@ const productSchema = Joi.object({
 //products?_sort=price&_order=desc&_limit=4    ||  products?_page2&_limit=4
 export const getAll = async (req, res) => {
   const {
-    _limit = 10,
+    _limit = 20,
     _sort = "creatAt",
     _order = "asc",
     _page = 1
